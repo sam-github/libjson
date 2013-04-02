@@ -40,7 +40,22 @@ override LDLIBS   += -pthread
 endif
 endif
 
-all: json
+all: json libjson.a
+
+libjson.a: json.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) -UJSON_MAIN -c -o libjson.o json.c
+	$(AR) rc $@ libjson.o
+
+prefix = /usr/local
+
+install-lib: libjson.a
+	install -D json.h $(DESTDIR)$(prefix)/include/json.h
+	install -D libjson.a $(DESTDIR)$(prefix)/lib/libjson.a
+
+install-bin: json
+	install -D json $(DESTDIR)$(prefix)/bin/json
+
+install: install-lib install-bin
 
 .PHONY: clean clean~
 
