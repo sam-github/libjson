@@ -1,0 +1,4 @@
+src/*.a
+src/*.o
+src/*.so
+src/json
