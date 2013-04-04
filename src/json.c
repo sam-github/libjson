@@ -2904,9 +2904,12 @@ static void call_exec(struct call *fun) {
 #define USAGE \
 	"%s [-pf:Vh] [cmd [args] ...]\n" \
 	"  -p       pretty print\n" \
-	"  -f PATH  file to parse\n" \
+	"  -f PATH  file to parse, default is stdin\n" \
 	"  -V       print version\n" \
 	"  -h       print usage\n" \
+	"cmd is one of:\n" \
+	"  print    use _printfile()\n" \
+	"  puts     use _printstring()\n" \
 	"\n" \
 	"Report bugs to <william@25thandClement.com>\n"
 
